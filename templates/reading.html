@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iVPT: READING</title>
+        <link rel="stylesheet" href="../static/asserts/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="../static/asserts/css/bootstrap.rtl.min.css"> -->
+        <!-- <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"> -->
+        <link rel="stylesheet" href="../static/common.css">
+        <link rel="stylesheet" href="../static/quiz.css">
+        <link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- <script src="../static/asserts/js/bootstrap.bundle.min.js"></script> -->
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg navbar-fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="../static/logo.png" alt="iVPT" class="" height="30px">
+                </a>
+                <button class="navbar-toggler" 
+                        type="button" 
+                        data-toggle="collapse" 
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto" id="navbar-session">
+                        <li class="navbar-item">
+                            <a href="/" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="/" class="nav-link">Logout</a>
+                        </li>
+                    </ul>                  
+                </div>
+            </div>
+        </nav>
+        <!-- End Navigation Bar -->
+        <!-- Message Alert -->
+        <div class="container">
+            <div class="alert container d-none" id="msg"></div>
+            <div class="alert alert-danger container d-none"> Error</div>
+            <div class="alert alert-success container d-none">Successfully</div>
+        </div>
+        <!-- End Message -->
+
+        <!-- Rules box -->
+        <div class="rules_box container shadow rounded p-3 mb-5 bg-body" id="rules_box">
+            <h2 class="text-center">PHẦN II: ĐỌC HIỂU 閱讀測驗</h2>
+            <div id="quiz-list-section" class="container title_center"></div>
+            <p id="qui-rules-para">Phần thi này kéo dài khoảng 20 phút. Mỗi câu hỏi đều có 4 lựa chọn để chọn ra một đáp án. Mỗi câu 2,5 điểm, tổng cộng là 50 điểm.</p>
+            <div class="quiz_center">
+                <button id="begin_button" class="begin btn btn-success btn-rounded">Bắt đầu làm bài</button>
+            </div>     
+        </div>
+
+        <!-- Quiz Box -->
+        <div class="quiz_box" id="quiz-box-reading">
+            <header class="container">
+                <!-- Timer -->
+                <div id="timer" class="timer rounded">
+                    <div id="time_left_txt"  class="time-left">Time Left</div>
+                    <div id="sec" class="timer-sec">00:00:00</div>
+                </div>
+                <div id="timeline" class="time-line"></div>
+            </header>
+            <section class="container"  id="section">
+                <div class="shadow p-3 mb-2 bg-body rounded" id="questions_part">
+                    
+                </div>
+            </section>
+            <!-- footer -->
+            <footer class="page-footer fixed-bottom pt-1">
+                <div class="container">
+                    <ul class="list-unstyled list-inline text-center py">
+                        <li class="list-inline-item">
+                            <input type="submit" value="Submit" id="submit"
+                                class="btn btn-success btn-rounded">
+                            <div class="btn btn-success" id="finish">Finish Test Reading</div>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </body>
+    
+    <script src="../static/quetions.js"></script>
+    <script src="../static/reading.js"></script>
+</html>

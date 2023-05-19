@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image to base 64</title>
+    </head>
+    <body>
+        <h1>Image to base 64</h1>
+        <input id='inputFiles' type="file" multiple accept="image/*" onchange="encodeImageFile();">
+        <button onclick="showDic();">Show Dictionary</button>
+        <div id="image-list"></div>
+        <script type='text/javascript'>
+            const filesSelected = document.getElementById('inputFiles');
+            const imageList = document.getElementById('image-list');
+            var imageValue;
+            function encodeImageFile() {
+                const files = filesSelected.files;
+                imageValue = {};
+                for (let index= 0; index < files.length; index++) {
+                    const file = files[index];
+                    // console.log(file.name);
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const image = document.createElement('img');
+                        image.src = e.target.result;
+                        image.width = 300;
+                        image.height = 300;
+                        imageList.appendChild(image);
+                        imageValue[file.name] = e.target.result;
+                        }
+                    reader.readAsDataURL(file);
+                    }
+            }
+            function showDic() {
+                console.log(imageValue);
+                            
+                const filePath = 'dictionary_ques.js';
+                const fileContent = `const dictionary = ${JSON.stringify(imageValue, null, 2)};\n\nexport default dictionary;`;
+
+                const blob = new Blob([fileContent], { type: 'text/javascript' });
+                const url = URL.createObjectURL(blob);
+
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = filePath;
+                downloadLink.click();
+            };
+        </script>
+    </body>
+</html>

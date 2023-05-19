@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Audio to base 64</title>
+    </head>
+    <body>
+        <h1>Audio to base 64</h1>
+        <input id='inputFiles' type="file" multiple accept="audio/*" onchange="encodeAudioFile();">
+        <button onclick="showDic();">Show Dictionary</button>
+        <div id="audio-list"></div>
+        <script type='text/javascript'>
+            const filesSelected = document.getElementById('inputFiles');
+            const audioList = document.getElementById('audio-list');
+            var audioValue;
+            function encodeAudioFile() {
+                const files = filesSelected.files;
+                audioValue = {};
+                for (let index= 0; index < files.length; index++) {
+                    const file = files[index];
+                    // console.log(file.name);
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const audio = document.createElement('audio');
+                        audio.controls = true 
+                        const source = document.createElement('source');
+                        source.src = e.target.result;
+                        audio.appendChild(source);
+                        audioList.appendChild(audio);
+                        audioValue[file.name] = e.target.result;
+                        }
+                    reader.readAsDataURL(file);
+                    }
+            }
+            function showDic() {
+                // console.log(audioValue);
+                            
+                const filePath = 'dictionary_audio.js';
+                const fileContent = `const dictionary = ${JSON.stringify(audioValue, null, 2)};\n\nexport default dictionary;`;
+
+                const blob = new Blob([fileContent], { type: 'text/javascript' });
+                const url = URL.createObjectURL(blob);
+
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = filePath;
+                downloadLink.click();
+            };
+        </script>
+    </body>
+</html>

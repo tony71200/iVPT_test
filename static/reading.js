@@ -180,6 +180,11 @@ function selectOption(id, value){
     console.log(answer_reading);
 }
 
+document.getElementById("finish").onclick = ()=>{
+    console.log("Finish");
+    location.href = '..index.html';
+}
+
 
 // const display = document.getElementById("sec");
 // const display = document.querySelector("#quiz-box-reading header #timer #sec");

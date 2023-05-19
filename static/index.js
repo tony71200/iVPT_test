@@ -1,3 +1,3 @@
 document.getElementById("login").onclick = ()=>{
-    location.href = "login.html"
+    location.href = "/templates/login.html"
 }

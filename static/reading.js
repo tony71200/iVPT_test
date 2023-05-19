@@ -182,7 +182,7 @@ function selectOption(id, value){
 
 document.getElementById("finish").onclick = ()=>{
     console.log("Finish");
-    location.href = '../index.html';
+    location.href = 'https://tony71200.github.io/index.html';
 }
 
 
